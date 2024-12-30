@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Trainer</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            width: 60%;
+            margin: 1rem auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 1rem; /* Add padding for spacing */
+        }
+
+        /* Header */
+        h2 {
+            text-align: center;
+            padding: 0.8rem;
+            background: #003d66;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        /* Form Styling */
+        .f_action {
+            width: 80%;
+            margin: 1rem auto;
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .Container {
+            margin: 1rem 0;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        /* Button Section */
+        .btn-success {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #003d66;
+            color: #ffffff;
+            font-size: 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background: #002b4d;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Trainer here..</h2>
+
+        <form action="/saveTrainer" th:object="${trainer}" method="post" class="f_action">
+            <fieldset>
+                <div class="Container">
+                    <!-- <label>Trainer Name</label> -->
+                  Trainer Name:  <input type="text" th:field="*{name}">
+                </div><br><br>
+                <div class="Container">
+                    <label>Trainer Profile</label>
+                    <input type="text" th:field="*{profile}">
+                </div><br><br>
+                <div class="Container">
+                    <label>Trainer Experience</label>
+                    <input type="number" th:field="*{experience}">
+                </div><br><br>
+                <button type="submit" class="btn-success">Save</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

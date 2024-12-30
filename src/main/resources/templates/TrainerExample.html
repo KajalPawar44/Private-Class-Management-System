@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Trainer Management System</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            margin: 1rem auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 1rem; /* Add padding for spacing */
+        }
+
+        /* Header */
+        h2 {
+            text-align: center;
+            padding: 0.8rem;
+            background: #003d66;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        /* Button Section */
+        .add-trainer-btn {
+            display: inline-block;
+            margin: 0.8rem auto;
+            padding: 0.5rem 0.8rem;
+            background: #003d66;
+            color: #ffffff;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .add-trainer-btn:hover {
+            background: #002b4d;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5rem 0;
+        }
+
+        th, td {
+            padding: 0.3rem 0.5rem; /* Smaller padding */
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            font-size: 0.75rem; /* Smaller font size for content */
+        }
+
+        th {
+            background: #eef1f7;
+            color: #003d66;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background: rgba(0, 61, 102, 0.1);
+        }
+
+        /* Buttons */
+        button {
+            padding: 0.3rem 0.6rem; /* Compact button size */
+            font-size: 0.75rem; /* Smaller font size for buttons */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-update {
+            background: #287233;
+            color: #ffffff;
+        }
+
+        .btn-update:hover {
+            background: #1f5727;
+        }
+
+        .btn-delete {
+            background: #cc3d33;
+            color: #ffffff;
+        }
+
+        .btn-delete:hover {
+            background: #a82f28;
+        }
+
+        /* Info Section */
+        .transaction-info {
+            margin: 0.5rem auto;
+            padding: 0.4rem;
+            background: #f0f5ff;
+            border-left: 4px solid #003d66;
+            border-radius: 4px;
+            color: #003d66;
+            font-style: italic;
+            font-size: 0.75rem; /* Smaller font size */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Trainer Management System</h2>
+        <button><a href="/newTrainer" class="add-trainer-btn">Add Trainer</a></button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Profile</th>
+                    <th>Experience</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="trainer:${listtrainer}">
+                    <td th:text="${trainer.id}"></td>
+                    <td th:text="${trainer.name}"></td>
+                    <td th:text="${trainer.profile}"></td>
+                    <td th:text="${trainer.experience}"></td>
+                    <td class="actions">
+                        <form th:action="@{/upadateTrainer/{id}(id=${trainer.id})}">
+                            <button type="submit" class="btn-update">Update</button>
+                        </form>
+                        <form th:action="@{/deletetrainer/{id}(id=${trainer.id})}">
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="transaction-info">
+        Note: The table above lists all trainers and allows you to update or delete trainer details.
+    </div>
+</body>
+</html>

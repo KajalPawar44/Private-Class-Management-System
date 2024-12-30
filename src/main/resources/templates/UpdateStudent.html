@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Student</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+         
+            background: #f4f4f9;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            width: 50%;
+            margin: 1rem auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 1rem;
+        }
+
+        /* Header */
+        h2 {
+            text-align: center;
+            padding: 0.8rem;
+            background: #003d66;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin: 0 0 1rem 0;
+            border-radius: 4px;
+        }
+
+        /* Form Styles */
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+            color: #003d66;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.85rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #003d66;
+            box-shadow: 0 0 4px rgba(0, 61, 102, 0.3);
+        }
+
+        /* Button Styles */
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background: #287233; /* Dark green for save */
+            color: #ffffff;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background: #1f5727;
+        }
+
+        /* Container for Form Fields */
+        .Container {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Student</h2>
+
+        <form th:action="@{/stu/{id}(id=${student2.id})}" th:object="${student2}" method="post">
+            <fieldset>
+                <div class="Container">
+                    <label>Student Name</label>
+                    <input type="text" th:field="*{full_name}">
+                </div>
+
+                <div class="Container">
+                    <label>Student DOB</label>
+                    <input type="text" th:field="*{dob}">
+                </div>
+
+                <div class="Container">
+                    <label>Student Gender</label>
+                    <input type="text" th:field="*{gender}">
+                </div>
+
+                <div class="Container">
+                    <label>Student Email</label>
+                    <input type="email" th:field="*{email}">
+                </div>
+
+                <div class="Container">
+                    <label>Student Phone Number</label>
+                    <input type="text" th:field="*{phone_no}">
+                </div>
+
+                <div class="Container">
+                    <label>Student Address</label>
+                    <input type="text" th:field="*{address}">
+                </div>
+
+                <div class="Container">
+                    <label>Student Course</label>
+                    <input type="text" th:field="*{course}">
+                </div>
+
+                <div class="Container">
+                    <label>Student Department</label>
+                    <input type="text" th:field="*{department}">
+                </div>
+
+                <div class="Container">
+                    <label>Trainer</label>
+                    <select th:field="*{trainer}">
+                        <option th:each="trainer : ${alltrainer}" th:value="${trainer}" th:text="${trainer.name}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-success">Save</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

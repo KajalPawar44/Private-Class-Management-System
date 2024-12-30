@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* H2 Styling */
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif
+}
+
+.table_col {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  
+    .tr_table{
+      position: relative;
+      display: block;
+      text-transform: uppercase;
+      margin: 20px 0;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #262626;
+      font-family: sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      transition: .5s;
+      z-index: 1;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-top: 2px solid #262626;
+        border-bottom: 2px solid #262626;
+        transform: scaleY(2);
+        opacity: 0;
+        transition: .3s;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #262626;
+        transform: scale(0);
+        opacity: 0;
+        transition: .3s;
+        z-index: -1;
+      }
+      &:hover {
+        color: #fff;
+        &:before {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+        &:after {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+/* Table Styling */
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Table Head */
+thead {
+    background: #6a11cb;
+    color: #fff;
+}
+
+th {
+    color:blue;
+    padding: 15px;
+    font-size: 1.2em;
+    border: 1px solid #ddd;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #e7e7e7;
+}
+
+tr:hover {
+    background-color: #ddd;
+    animation: hoverEffect 0.3s ease-in-out;
+}
+
+/* Table Data */
+td {
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+/* Button Styling */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6a11cb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #2575fc;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hoverEffect {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.03);
+    }
+}
+/*
+table {
+  width: 100%;
+   height: 70px; 
+}
+table {
+  border-collapse: collapse;
+}
+
+thead{ background-color: #04AA6D; color: white; }
+*/
+</style>
+</head>
+<body >
+<h2 >Trainer List</h2>
+<button><a href="/newTrainer">Add</a></button>
+<table border="1">
+<div class="table_col">
+<thead class="tr_table" >
+<tr >
+<th > ID</th>
+<th>Name</th>
+<th>Profile</th>
+<th>Experience </th>
+
+<th>Upadte Trainer</th>
+<th>Delete Trainer</th>
+</tr>
+</thead>
+</div>
+<tbody>
+<tr th:each="trainer:${listtrainer}">
+<td th:text="${trainer.id}"></td>
+<td th:text="${trainer.name}"></td>
+<td th:text="${trainer.profile}"></td>
+<td th:text="${trainer.experience}"></td>
+<td><a th:href="@{/upadateTrainer/{id}(id=${trainer.id})}">Update</a></td>
+<td><a th:href="@{/deletetrainer/{id}(id=${trainer.id})}">Delete</a></td>
+
+
+</tr>
+</tbody>
+</table>
+</body>
+</html>

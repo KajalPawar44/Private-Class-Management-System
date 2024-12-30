@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+    <style>
+        /* Reuse the provided CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background:url('https://png.pngtree.com/thumb_back/fw800/background/20240522/pngtree-a-student-is-writing-with-book-image-image_15679275.jpg');
+            
+             background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            margin-top:30px;
+            width: 90%;
+            max-width: 600px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom:30px;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 0.8rem;
+            background: #003d66;
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin: -1.5rem -1.5rem 1rem -1.5rem;
+            border-radius: 8px 8px 0 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.6rem;
+            font-size: 0.9rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        input:focus, select:focus {
+            border-color: #003d66;
+            outline: none;
+        }
+
+        button {
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+            background: #287233;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background: #1f5727;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Student</h2>
+
+        <form action="/saveStudent" th:object="${student}" method="post">
+            <!-- Student Name -->
+            <div class="form-group">
+                <label for="full_name">Student Name</label>
+                <input type="text" id="full_name" th:field="*{full_name}" placeholder="Enter full name">
+            </div>
+
+            <!-- Student DOB -->
+            <div class="form-group">
+                <label for="dob">Student DOB</label>
+                <input type="date" id="dob" th:field="*{dob}">
+            </div>
+
+            <!-- Student Gender -->
+            <div class="form-group">
+                <label for="gender">Student Gender</label>
+                <input type="text" id="gender" th:field="*{gender}" placeholder="Enter gender">
+            </div>
+
+            <!-- Student Email -->
+            <div class="form-group">
+                <label for="email">Student Email</label>
+                <input type="email" id="email" th:field="*{email}" placeholder="Enter email">
+            </div>
+
+            <!-- Student Phone -->
+            <div class="form-group">
+                <label for="phone_no">Student Phone Number</label>
+                <input type="number" id="phone_no" th:field="*{phone_no}" placeholder="Enter phone number">
+            </div>
+
+            <!-- Student Address -->
+            <div class="form-group">
+                <label for="address">Student Address</label>
+                <input type="text" id="address" th:field="*{address}" placeholder="Enter address">
+            </div>
+
+            <!-- Student Course -->
+            <div class="form-group">
+                <label for="course">Student Course</label>
+                <input type="text" id="course" th:field="*{course}" placeholder="Enter course">
+            </div>
+
+            <!-- Student Department -->
+            <div class="form-group">
+                <label for="department">Student Department</label>
+                <input type="text" id="department" th:field="*{department}" placeholder="Enter department">
+            </div>
+
+            <!-- Trainer -->
+            <div class="form-group">
+                <label for="trainer">Trainer</label>
+                <select id="trainer" th:field="*{trainer}">
+                    <option th:each="trainer : ${alltrainer}" th:value="${trainer}" th:text="${trainer.name}"></option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>
