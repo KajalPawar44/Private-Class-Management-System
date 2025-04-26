@@ -19,11 +19,13 @@ import com.studentmanage.service.TrainerService;
 public class ListController2 {
 
 	@Autowired
-//	private StudentService studentservice;
+	private StudentService studentservice;
+	
 	@GetMapping("/StudentAdminlogin")
 	public String admin() {
-		return "StudentAdmin";
+		return "Admin";
 	}
+	
 	 @PostMapping("Student/admin/login")
 	    public String handleLogin(@RequestParam String username, @RequestParam String password, Model model) {
 	        // Add your authentication logic here

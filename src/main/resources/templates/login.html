@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <style>
+    
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+.title-container {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px; /* Small gap between words */
+    z-index: 1;
+    pointer-events: none;
+    font:italic;
+}
+
+.smart-text {
+    font-size: 60px;
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+}
+
+.mentor-text {
+    font-size: 60px;
+    font-weight: bold;
+    color: white; /* White color */
+}
+
+        .container {
+            display: flex;
+            height: 100%;
+        }
+
+        .left-panel {
+            width: 50%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right-panel {
+            width: 50%;
+            background-image: url('https://smartschoolmanager.com/img/home/School-Management-System.jpg');
+            background-size: cover;  /* Ensure it covers the full screen */
+            background-position: center;
+            height: 100vh; /* Make the background cover full height */
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 2.5rem;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            left: -20px; /* Move form 20px to the left */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #6c63ff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #6c63ff;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #5a52d1;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .error {
+            color: red;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        .logout {
+            color: green;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+    </style>
+</head>
+
+<body>
+<div class="title-container">
+    <h1 class="smart-text">Smart</h1>
+    <h1 class="mentor-text">Mentor</h1>
+</div>
+
+    <div class="container">
+        <div class="left-panel">
+            <form th:action="@{/admin/login}" method="post" class="login-container">
+                <h2>Admin Login</h2>
+                <div>
+                    <label>Username:</label>
+                    <input type="text" name="username" required />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input type="password" name="password" required />
+                </div>
+                <button type="submit">Login</button>
+                <p th:if="${param.error}" class="error">Invalid username or password</p>
+                <p th:if="${param.logout}" class="logout">You have been logged out.</p>
+            </form>
+        </div>
+
+        <div class="right-panel"></div>
+    </div>
+
+</body>
+</html>

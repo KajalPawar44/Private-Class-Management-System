@@ -13,51 +13,52 @@ import com.studentmanage.service.TrainerService;
 
 @Controller
 public class TrainerController {
-@Autowired
-private TrainerService trainerservice;
-@GetMapping("/viewTrainers")
-public String getAllTrainer(Model model)
-{
-	model.addAttribute("listtrainer",trainerservice.getAllTrainer());
-	return "TrainerExample";           // Reading the data from trainer record
-}
 
+    @Autowired
+    private TrainerService trainerservice;
 
-@GetMapping("/newTrainer")
-public String AddNewTrainer(Model model)
-{
-	Trainer trainer = new Trainer();
-	model.addAttribute("trainer", trainer);	// for adding the data or record in the trainer record
-	return "New_Trainer_Form";	
-}
-@PostMapping("/saveTrainer")
-public String savetrainer(@ModelAttribute("trainer")Trainer trainer)
-{
-	trainerservice.saveTrainer(trainer);
-	return "redirect:/viewTrainers";
-}
-@GetMapping("/upadateTrainer/{id}")
-public String updateTrainerById(@PathVariable Long id, Model model)
-{
-	Trainer trainer= trainerservice.getTrainerById(id);
-	model.addAttribute("trainer2", trainer);
-	return "UpdateTrainer_Form";
-//	return "redirect:/viewTrainers";
-	
-	
-}
-@PostMapping("/{id}")
-public String updatedTrainer(@PathVariable Long id,@ModelAttribute("trainer2")Trainer trainer) {
-	
-	trainer.setId(id);          // postMapping is liye ki naya record create na kar sake or usi id ko update kar sake ..
-	trainerservice.saveTrainer(trainer);
-	return "redirect:/viewTrainers";
-}
-@GetMapping("/deletetrainer/{id}")
-public String deleteTrainerById(@PathVariable Long id)
-{
-	trainerservice.deleteTrainerById(id);
-	return "redirect:/viewTrainers";        // for deleting the existing trainer from record
-	
-}
+    // Show all trainers
+    @GetMapping("/viewTrainers")
+    public String getAllTrainer(Model model) {
+        model.addAttribute("listtrainer", trainerservice.getAllTrainer());
+        return "TrainerExample";  // Thymeleaf page to display trainers
+    }
+
+    // Show form to add a new trainer
+    @GetMapping("/newTrainer")
+    public String AddNewTrainer(Model model) {
+        Trainer trainer = new Trainer();
+        model.addAttribute("trainer", trainer);
+        return "New_Trainer_Form";
+    }
+
+    // Save trainer form submission
+    @PostMapping("/saveTrainer")
+    public String savetrainer(@ModelAttribute("trainer") Trainer trainer) {
+        trainerservice.saveTrainer(trainer);
+        return "redirect:/viewTrainers";
+    }
+
+    // Show form to update trainer by id
+    @GetMapping("/upadateTrainer/{id}")
+    public String updateTrainerById(@PathVariable Long id, Model model) {
+        Trainer trainer = trainerservice.getTrainerById(id);
+        model.addAttribute("trainer2", trainer);
+        return "UpdateTrainer_Form";
+    }
+
+    // Update trainer after form submission
+    @PostMapping("/{id}")
+    public String updatedTrainer(@PathVariable Long id, @ModelAttribute("trainer2") Trainer trainer) {
+        trainer.setId(id); // Ensure same ID is used for updating
+        trainerservice.saveTrainer(trainer);
+        return "redirect:/viewTrainers";
+    }
+
+    // Delete trainer by id
+    @GetMapping("/deletetrainer/{id}")
+    public String deleteTrainerById(@PathVariable Long id) {
+        trainerservice.deleteTrainerById(id);
+        return "redirect:/viewTrainers";
+    }
 }

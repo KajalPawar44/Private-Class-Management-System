@@ -11,24 +11,35 @@ import com.studentmanage.repository.StudentRepository;
 @Service
 public class StudentService {
 
-	@Autowired
-	private StudentRepository studentrepository;
-	
+
+	    private final StudentRepository studentRepository;
+
+	    @Autowired
+	    public StudentService(StudentRepository studentRepository) {
+	        this.studentRepository = studentRepository;
+	    }
+
+	    // Keep existing methods
 	public List<Student> getAllStudent()
 	{
-		return studentrepository.findAll();
+		return studentRepository.findAll();
 	}
 	public Student getStudentById(Integer id)
 	{
-		return studentrepository.findById(id).orElseThrow();
+		return studentRepository.findById(id).orElseThrow();
 	}
 
 	public Student saveStudent(Student student)
 	{
-		return studentrepository.save(student);
+		return studentRepository.save(student);
 	}
 	public void deleteStudentById(Integer id)
 	{
-		studentrepository.deleteById(id);
+		studentRepository.deleteById(id);
 	}
+	public void assignTrainerToStudent(Long studentId, Long trainerId) {
+		studentRepository.deleteAll();
+	}
+	
 }
+

@@ -1,76 +1,127 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Welcome - Student Management System</title>
+    <title>Welcome</title>
     <style>
-        /* Global Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f9;
-             background: url('https://cdn.pixabay.com/photo/2021/10/11/04/08/university-6699377_1280.jpg') no-repeat center center fixed; /* Background image */
-            background-size: cover; /* Make the image cover the entire background */
-            color: #333;
-        }
-        .carousel-control-next{
-          background-size:40px;
+            background: url('https://cdn.pixabay.com/photo/2021/10/11/04/08/university-6699377_1280.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            position: relative;
+            flex-direction: column;
         }
 
-        /* Container */
+        .title-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .smart-text {
+            font-size: 70px;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+             margin-bottom: 1.5rem;
+        }
+
+        .highlight-message {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #28a745;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
         .container {
             width: 90%;
-            margin: 1rem auto;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center; /* Center content in the container */
-            padding: 1rem; /* Add padding for spacing */
-        }
-
-        /* Header */
-        h1 {
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
             text-align: center;
-            padding: 1rem;
-            background: #003d66;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 1.6rem;
             color: #ffffff;
-            font-size: 1.5rem; /* Adjusted font size */
-            margin: 0 0 1rem 0; /* Margin below the header */
-            border-radius: 8px 8px 0 0; /* Rounded top corners for header */
+            margin-bottom: 1rem;
         }
 
-        /* Description */
-        p {
-            font-size: 1rem; /* Description text font size */
-            margin: 0.5rem 0 1rem 0; /* Adjust margins */
-            color: #555; /* Neutral gray for paragraph text */
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #ffc107;
+            margin-bottom: 1.5rem;
         }
 
-        /* Button */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
         .btn {
-            display: inline-block;
-            padding: 0.5rem 1rem; /* Compact padding for button */
-            font-size: 0.9rem; /* Adjusted font size */
-            color: #ffffff;
-            background-color: #003d66; /* Dark blue for button background */
             text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 20px; /* Rounded pill-like look */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .btn:hover {
-            background-color: #002b4d; /* Darker blue for hover effect */
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+        }
+
+        .logout-btn:hover {
+            background-color: #a71d2a;
         }
     </style>
+
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome To The Student Management System</h1>
-        <p>Manage students, view details, and streamline your processes efficiently.</p>
-        <a href="/Adminlogin" class="btn">Admin Login</a> 
-        <a href="/StudentAdminlogin" class="btn">Student Login</a>
-        <a href="/AdminloginTrainer" class="btn">Trianer Login</a>
+   <div class="title-container">
+        <span class="smart-text">Welcome to Smart Mentor System</span>
     </div>
+    <div class="highlight-message">✅ Successfully Logged In!</div>
+
+    <div class="container">
+
+        <!-- Added subtitle: Smart Future Mentor -->
+        
+
+        <div class="button-group">
+            <!-- Trainer Login button -->
+            <a th:href="@{/Trainer123}" class="btn">Trainer Login</a>
+            <!-- Student Login button -->
+            <a th:href="@{/Student123}" class="btn">Student Login</a>
+            <!-- Logout button -->
+            <a th:href="@{/logout}" class="btn logout-btn">Logout</a>
+        </div>
+    </div>
+
+  
+
 </body>
 </html>

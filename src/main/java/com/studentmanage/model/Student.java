@@ -1,9 +1,4 @@
 package com.studentmanage.model;
-
-import java.util.List;
-
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,9 +14,7 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-//	@Column(name="Roll_No")
-//	private int rollNumber;
+	private Long id;
 	@Column(name="Full Name")
 	private String full_name;
 	@Column(name="DOB")
@@ -60,11 +53,11 @@ public class Student {
 		this.department = department;
 		this.trainer = trainer;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(Long id2) {
+		this.id = id2;
 	}
 	public String getFull_name() {
 		return full_name;

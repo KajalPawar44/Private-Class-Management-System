@@ -89,9 +89,9 @@
 </head>
 <body>
     <div class="container">
-        <h2>Add Student</h2>
+        <h2>Add New Student..!</h2>
 
-        <form action="/saveStudent" th:object="${student}" method="post">
+        <form th:action="@{/saveStudent}" method="post" th:object="${student}">
             <!-- Student Name -->
             <div class="form-group">
                 <label for="full_name">Student Name</label>

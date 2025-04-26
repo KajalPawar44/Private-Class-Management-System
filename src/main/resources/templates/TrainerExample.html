@@ -117,7 +117,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Trainer Management System</h2>
+        <h2>Trainer List</h2>
         <button><a href="/newTrainer" class="add-trainer-btn">Add Trainer</a></button>
         <table>
             <thead>
@@ -125,12 +125,12 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Profile</th>
-                    <th>Experience</th>
+                    <th>Experience In Year</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="trainer:${listtrainer}">
+                <tr th:each="trainer : ${listtrainer}">
                     <td th:text="${trainer.id}"></td>
                     <td th:text="${trainer.name}"></td>
                     <td th:text="${trainer.profile}"></td>

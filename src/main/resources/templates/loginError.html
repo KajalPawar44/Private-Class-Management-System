@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://cdn.pixabay.com/photo/2021/10/11/04/08/university-6699377_1280.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .error-container {
+            width: 90%;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        h2 {
+            background: #cc3d33;
+            color: #fff;
+            padding: 0.8rem;
+            font-size: 1.2rem;
+            border-radius: 8px 8px 0 0;
+            margin: -1.5rem -1.5rem 1rem -1.5rem;
+        }
+
+        .message {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: 'red';
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            background: #003d66;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: #002b4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h2>Login Failed</h2>
+        <p th:text="${errorMessage}"></p>
+        <p class="message"  >Invalid username or password..!</p>
+        <a href="/Adminlogin" class="back-btn">Back to Login</a>
+    </div>
+</body>
+</html>

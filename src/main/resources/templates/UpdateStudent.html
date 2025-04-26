@@ -89,10 +89,9 @@
 </head>
 <body>
     <div class="container">
-        <h2>Update Student</h2>
+        <h2>Update Student Info</h2>
 
-        <form th:action="@{/stu/{id}(id=${student2.id})}" th:object="${student2}" method="post">
-            <fieldset>
+<form th:action="@{/stu/{id}(id=${student.id})}" method="post" th:object="${student}">            <fieldset>
                 <div class="Container">
                     <label>Student Name</label>
                     <input type="text" th:field="*{full_name}">
