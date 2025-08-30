@@ -23,30 +23,24 @@ public class StudentController {
 	    @Autowired
 	    private TrainerService trainerService;
 
+
+		@GetMapping("/addStudent")
+		public String AddNewStudent(Model model)
+		{
+			Student student = new Student();
+			model.addAttribute("student", student);	// for adding the data or record in the trainer record
+			model.addAttribute("alltrainer",trainerService.getAllTrainer());
+			return "NewStudent";	
+		}
+	    
+	    
 	    @GetMapping("/viewStudent2")
 	    public String viewStudents(Model model) {
 	        model.addAttribute("liststudent", studentService.getAllStudent());
 	        return "ViewStudent1";
 	    }
-
-	    // Keep other student-related methods
-//	@GetMapping("/getAllStudents")
-//	public String getAllStudent2(Model model)
-//	{
-//		model.addAttribute("liststudent",studentService.getAllStudent());
-//		return "ListStudent";           // Reading the data from trainer record
-//	}
-//	
 	
 	
-	@GetMapping("/addStudent")
-	public String AddNewStudent(Model model)
-	{
-		Student student = new Student();
-		model.addAttribute("student", student);	// for adding the data or record in the trainer record
-		model.addAttribute("alltrainer",trainerService.getAllTrainer());
-		return "NewStudent";	
-	}
 	
 	@PostMapping("/saveStudent")
 	public String savestudent(@ModelAttribute("student")Student student)

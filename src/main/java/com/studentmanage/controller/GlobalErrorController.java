@@ -1,6 +1,5 @@
 package com.studentmanage.controller;
 
-//package com.studentmanage.error;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -19,6 +18,6 @@ public class GlobalErrorController implements ErrorController {
         model.addAttribute("status", status);
         model.addAttribute("message", message != null ? message : "Unexpected error");
 
-        return "loginError"; // Thymeleaf template
+        return "loginError";
     }
 }

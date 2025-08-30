@@ -28,9 +28,8 @@ public class ListController2 {
 	
 	 @PostMapping("Student/admin/login")
 	    public String handleLogin(@RequestParam String username, @RequestParam String password, Model model) {
-	        // Add your authentication logic here
 	        if ("kajal".equals(username) && "kajal123".equals(password)) {
-	            return "redirect:/viewStudent2"; // Redirect on successful login
+	            return "redirect:/viewStudent2"; 
 	        }
 	        model.addAttribute("error", "Invalid username or password");
 	        return "StudentAdminlogin";
